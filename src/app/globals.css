@@ -71,6 +71,33 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile scrolling optimizations */
+@media (max-width: 768px) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    overscroll-behavior-y: contain;
+  }
+
+  /* Disable heavy CSS animations on mobile */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Re-enable only essential transitions */
+  a,
+  button {
+    transition-duration: 150ms !important;
+  }
 }
 
 ::selection {
@@ -104,6 +131,21 @@ body {
   backdrop-filter: blur(30px) saturate(1.4);
   -webkit-backdrop-filter: blur(30px) saturate(1.4);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Disable expensive backdrop-filter on mobile */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(14, 14, 22, 0.85);
+  }
+
+  .glass-strong {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(14, 14, 22, 0.95);
+  }
 }
 
 /* ────────────────────────────────────────────

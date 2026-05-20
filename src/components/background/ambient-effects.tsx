@@ -1,9 +1,35 @@
 "use client";
 
 import { useMousePosition } from "@/hooks/use-mouse-position";
+import { useIsMobile } from "@/hooks/use-media-query";
 
 export default function AmbientEffects() {
   const mouse = useMousePosition();
+  const isMobile = useIsMobile();
+
+  // Disable mouse-tracking on mobile
+  if (isMobile) {
+    return (
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        {/* Static glow blobs only */}
+        <div
+          className="absolute -top-40 -right-40 h-[500px] w-[500px] animate-pulse-glow rounded-full opacity-15 blur-[100px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(168,85,85,0.5) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute -bottom-40 -left-40 h-[500px] w-[500px] animate-pulse-glow rounded-full opacity-10 blur-[100px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(6,255,208,0.4) 0%, transparent 70%)",
+            animationDelay: "1.5s",
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">

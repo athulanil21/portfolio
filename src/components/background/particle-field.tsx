@@ -201,8 +201,9 @@ function Scene() {
 
 export default function ParticleField() {
   const reducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
 
-  if (reducedMotion) return null;
+  if (reducedMotion || isMobile) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0">

@@ -1,43 +1,51 @@
 import type { Variants } from "framer-motion";
 
+/* ── Mobile detection helper ── */
+function isMobile() {
+  if (typeof window === "undefined") return false;
+  return /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  ) || window.innerWidth < 768;
+}
+
 /* ── Fade variants ── */
 export const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: isMobile() ? 20 : 40, filter: isMobile() ? "none" : "blur(10px)" },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1] },
+    filter: "none",
+    transition: { duration: isMobile() ? 0.4 : 0.7, ease: [0.25, 0.4, 0.25, 1] },
   },
 };
 
 export const fadeInDown: Variants = {
-  hidden: { opacity: 0, y: -40, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: isMobile() ? -20 : -40, filter: isMobile() ? "none" : "blur(10px)" },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1] },
+    filter: "none",
+    transition: { duration: isMobile() ? 0.4 : 0.7, ease: [0.25, 0.4, 0.25, 1] },
   },
 };
 
 export const fadeInLeft: Variants = {
-  hidden: { opacity: 0, x: -60, filter: "blur(8px)" },
+  hidden: { opacity: 0, x: isMobile() ? -30 : -60, filter: isMobile() ? "none" : "blur(8px)" },
   visible: {
     opacity: 1,
     x: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1] },
+    filter: "none",
+    transition: { duration: isMobile() ? 0.4 : 0.7, ease: [0.25, 0.4, 0.25, 1] },
   },
 };
 
 export const fadeInRight: Variants = {
-  hidden: { opacity: 0, x: 60, filter: "blur(8px)" },
+  hidden: { opacity: 0, x: isMobile() ? 30 : 60, filter: isMobile() ? "none" : "blur(8px)" },
   visible: {
     opacity: 1,
     x: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1] },
+    filter: "none",
+    transition: { duration: isMobile() ? 0.4 : 0.7, ease: [0.25, 0.4, 0.25, 1] },
   },
 };
 
@@ -47,7 +55,7 @@ export const scaleIn: Variants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] },
+    transition: { duration: isMobile() ? 0.3 : 0.5, ease: [0.25, 0.4, 0.25, 1] },
   },
 };
 
@@ -57,8 +65,8 @@ export const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
+      staggerChildren: isMobile() ? 0.05 : 0.1,
+      delayChildren: isMobile() ? 0.05 : 0.1,
     },
   },
 };
@@ -68,19 +76,19 @@ export const staggerContainerSlow: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: isMobile() ? 0.05 : 0.15,
+      delayChildren: isMobile() ? 0.05 : 0.2,
     },
   },
 };
 
 export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: isMobile() ? 15 : 30, filter: isMobile() ? "none" : "blur(6px)" },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] },
+    filter: "none",
+    transition: { duration: isMobile() ? 0.3 : 0.5, ease: [0.25, 0.4, 0.25, 1] },
   },
 };
 
