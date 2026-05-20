@@ -64,6 +64,7 @@ export interface SkillCategory {
   id: string;
   label: string;
   icon: LucideIcon;
+  color: string;
   skills: Skill[];
 }
 
@@ -72,6 +73,7 @@ export const skillCategories: SkillCategory[] = [
     id: "ai-ml",
     label: "AI / ML",
     icon: Brain,
+    color: "#00b4ff",
     skills: [
       { name: "PyTorch", icon: Cpu },
       { name: "TensorFlow", icon: Cpu },
@@ -85,6 +87,7 @@ export const skillCategories: SkillCategory[] = [
     id: "llm",
     label: "LLM Engineering",
     icon: Bot,
+    color: "#a855f7",
     skills: [
       { name: "OpenAI API", icon: Sparkles },
       { name: "LangChain", icon: Workflow },
@@ -98,6 +101,7 @@ export const skillCategories: SkillCategory[] = [
     id: "backend",
     label: "Backend",
     icon: Server,
+    color: "#06ffd0",
     skills: [
       { name: "Node.js", icon: Server },
       { name: "Python", icon: Code2 },
@@ -111,6 +115,7 @@ export const skillCategories: SkillCategory[] = [
     id: "frontend",
     label: "Frontend",
     icon: Globe,
+    color: "#ff0055",
     skills: [
       { name: "React", icon: Code2 },
       { name: "Next.js", icon: Globe },
@@ -124,6 +129,7 @@ export const skillCategories: SkillCategory[] = [
     id: "cloud",
     label: "Cloud / DevOps",
     icon: Cloud,
+    color: "#f97316",
     skills: [
       { name: "AWS", icon: Cloud },
       { name: "Docker", icon: Server },
@@ -137,6 +143,7 @@ export const skillCategories: SkillCategory[] = [
     id: "databases",
     label: "Databases",
     icon: Database,
+    color: "#10b981",
     skills: [
       { name: "PostgreSQL", icon: Database },
       { name: "MongoDB", icon: Database },
@@ -150,6 +157,7 @@ export const skillCategories: SkillCategory[] = [
     id: "automation",
     label: "Automation",
     icon: Workflow,
+    color: "#eab308",
     skills: [
       { name: "n8n", icon: Workflow },
       { name: "Zapier", icon: Workflow },
