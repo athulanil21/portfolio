@@ -2,11 +2,9 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ExternalLink, Star } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio-data";
 import SectionHeading from "@/components/ui/section-heading";
-import GlowCard from "@/components/ui/glow-card";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import BentoCard from "@/components/ui/bento-card";
 
 const projectIllustrations: Record<string, React.ReactNode> = {
   "erp-mcp-server": (
@@ -175,64 +173,28 @@ export default function Projects() {
         </motion.div>
 
         <AnimatePresence mode="wait">
-          <motion.div key={activeFilter} variants={staggerContainer} initial="hidden" animate="visible" exit={{ opacity: 0, transition: { duration: 0.2 } }} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((project) => (
-              <motion.div key={project.id} variants={staggerItem} layout>
-                <GlowCard className="flex h-full flex-col p-6">
-                  {/* Badges */}
-                  <div className="mb-4 flex flex-wrap gap-2">
-                    {project.featured && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-accent-cyan/10 px-2.5 py-1 text-[11px] font-medium text-accent-cyan border border-accent-cyan/20">
-                        <Star size={10} fill="currentColor" />Featured
-                      </span>
-                    )}
-                    <span className="inline-flex items-center rounded-full bg-accent-purple/10 px-2.5 py-1 text-[11px] font-medium text-accent-purple border border-accent-purple/20">
-                      {project.category}
-                    </span>
-                  </div>
-
-                  {/* Content Row */}
-                  <div className="flex flex-1 flex-col">
-                    <div className="flex-1">
-                      <h3 className="mb-2 font-display text-lg font-semibold text-text-primary leading-tight">{project.title}</h3>
-                      <p className="mb-4 text-sm leading-relaxed text-text-secondary">{project.description}</p>
+          <motion.div key={activeFilter} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(180px,auto)] gap-6">
+            {filtered.map((project) => {
+              const isLarge = project.size === "large";
+              const isMedium = project.size === "medium";
+              
+              return (
+                <BentoCard
+                  key={project.id}
+                  project={project}
+                  illustration={projectIllustrations[project.id] || (
+                    <div className="flex h-full items-center justify-center rounded-lg bg-bg-secondary">
+                      <span className="font-display text-3xl font-bold text-white/10">{project.title.charAt(0)}</span>
                     </div>
-
-                    {/* Illustration */}
-                    <div className="mb-4 flex justify-center">
-                      <div className="h-32 w-full max-w-[180px]">
-                        {projectIllustrations[project.id] || (
-                          <div className="flex h-full items-center justify-center rounded-lg bg-bg-secondary">
-                            <span className="font-display text-3xl font-bold text-white/10">{project.title.charAt(0)}</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Tech Stack */}
-                    <div className="mb-4 flex flex-wrap gap-2">
-                      {project.techStack.map((t) => (
-                        <span key={t} className="rounded-lg bg-bg-secondary px-3 py-1.5 text-xs text-text-muted border border-border-subtle">{t}</span>
-                      ))}
-                    </div>
-
-                    {/* Action Button */}
-                    {project.liveUrl ? (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-center justify-center gap-2 rounded-lg bg-accent-blue/10 px-4 py-2.5 text-sm font-medium text-accent-blue border border-accent-blue/20 transition-all duration-300 hover:bg-accent-blue/20"
-                        data-cursor-hover
-                      >
-                        Live Demo
-                        <ExternalLink size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </a>
-                    ) : null}
-                  </div>
-                </GlowCard>
-              </motion.div>
-            ))}
+                  )}
+                  className={`
+                    ${isLarge ? "md:col-span-2 md:row-span-2" : ""}
+                    ${isMedium ? "md:col-span-2" : ""}
+                    ${project.size === "small" ? "md:col-span-1" : ""}
+                  `}
+                />
+              );
+            })}
           </motion.div>
         </AnimatePresence>
       </div>

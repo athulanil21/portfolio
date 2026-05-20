@@ -174,6 +174,7 @@ export interface Project {
   image: string;
   liveUrl?: string;
   githubUrl?: string;
+  size: "small" | "medium" | "large";
 }
 
 export const projects: Project[] = [
@@ -188,6 +189,7 @@ export const projects: Project[] = [
     featured: true,
     gradient: "from-cyan-500/20 via-blue-500/20 to-purple-500/20",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
+    size: "large",
   },
   {
     id: "telegram-erp-bot",
@@ -200,6 +202,7 @@ export const projects: Project[] = [
     featured: true,
     gradient: "from-blue-500/20 via-cyan-500/20 to-teal-500/20",
     image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&h=600&fit=crop",
+    size: "large",
   },
   {
     id: "whatsapp-erp-bot",
@@ -212,6 +215,7 @@ export const projects: Project[] = [
     featured: true,
     gradient: "from-green-500/20 via-emerald-500/20 to-cyan-500/20",
     image: "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&h=600&fit=crop",
+    size: "medium",
   },
   {
     id: "artcl-ai",
@@ -225,6 +229,7 @@ export const projects: Project[] = [
     gradient: "from-blue-500/20 via-purple-500/20 to-cyan-500/20",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=600&fit=crop",
     liveUrl: "https://ai.artcl.in",
+    size: "medium",
   },
   {
     id: "saybill-erp",
@@ -237,6 +242,7 @@ export const projects: Project[] = [
     featured: true,
     gradient: "from-purple-500/20 via-pink-500/20 to-orange-500/20",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    size: "small",
   },
   {
     id: "lend-rental",
@@ -249,6 +255,7 @@ export const projects: Project[] = [
     featured: true,
     gradient: "from-green-500/20 via-emerald-500/20 to-teal-500/20",
     image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop",
+    size: "small",
   },
   {
     id: "omnichannel-integration",
@@ -261,6 +268,7 @@ export const projects: Project[] = [
     featured: false,
     gradient: "from-orange-500/20 via-red-500/20 to-pink-500/20",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    size: "small",
   },
   {
     id: "custom-erp",
@@ -273,6 +281,7 @@ export const projects: Project[] = [
     featured: false,
     gradient: "from-green-500/20 via-emerald-500/20 to-teal-500/20",
     image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop",
+    size: "small",
   },
 ];
 
