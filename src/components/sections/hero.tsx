@@ -54,8 +54,7 @@ export default function Hero() {
         <motion.div variants={staggerItem} className="overflow-hidden">
           <motion.h1
             variants={slideReveal}
-            className="chrome-text text-5xl font-black tracking-tight sm:text-7xl md:text-8xl lg:text-9xl"
-            data-text={`${personalInfo.name}.`}
+            className="font-display text-5xl font-bold tracking-tight text-text-primary sm:text-7xl md:text-8xl lg:text-9xl"
           >
             {personalInfo.name}
             <span className="text-accent-blue">.</span>

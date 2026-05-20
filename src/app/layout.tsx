@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, Cinzel } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -12,13 +12,6 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-});
-
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -62,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${cinzel.variable} antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}
     >
       <body className="noise-overlay min-h-screen" style={{ fontFamily: "var(--font-inter)" }}>
         {children}
