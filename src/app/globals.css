@@ -44,12 +44,55 @@
 
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-chrome: "Cinzel", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
   --animate-gradient-shift: gradient-shift 8s ease infinite;
   --animate-marquee: marquee 40s linear infinite;
   --animate-marquee-reverse: marquee-reverse 40s linear infinite;
+}
+
+/* ────────────────────────────────────────────
+   Chrome Text Effect
+   ──────────────────────────────────────────── */
+.chrome-text {
+  font-family: var(--font-chrome);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e8e8e8 20%,
+    #c0c0c0 40%,
+    #ffffff 50%,
+    #a0a0a0 60%,
+    #d0d0d0 80%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))
+          drop-shadow(0 0 20px rgba(0, 180, 255, 0.2));
+  text-shadow: none;
+  position: relative;
+}
+
+.chrome-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(0, 180, 255, 0.05) 50%,
+    rgba(168, 85, 247, 0.05) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: blur(8px);
 }
 
 /* ────────────────────────────────────────────
