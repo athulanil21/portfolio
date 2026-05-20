@@ -1,14 +1,18 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { education } from "@/data/portfolio-data";
 import SectionHeading from "@/components/ui/section-heading";
 import { GraduationCap } from "lucide-react";
 
 export default function Education() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <section id="education" className="section-padding relative" ref={ref}>
@@ -19,11 +23,8 @@ export default function Education() {
           {/* Timeline line */}
           <div className="absolute left-6 top-0 h-full w-px bg-border-subtle md:left-1/2 md:-translate-x-px">
             <motion.div
-              className="h-full w-full bg-gradient-to-b from-accent-blue via-accent-purple to-accent-cyan"
-              initial={{ scaleY: 0 }}
-              animate={isInView ? { scaleY: 1 } : {}}
-              transition={{ duration: 1.5, ease: [0.25, 0.4, 0.25, 1] }}
-              style={{ transformOrigin: "top" }}
+              className="h-full w-full origin-top bg-gradient-to-b from-accent-blue via-accent-purple to-accent-cyan"
+              style={{ scaleY }}
             />
           </div>
 
@@ -36,9 +37,10 @@ export default function Education() {
               return (
                 <motion.div
                   key={edu.id}
-                  initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
-                  animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-                  transition={{ duration: 0.6, delay: 0.2 * i }}
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
                   className={`relative flex items-start gap-6 md:gap-0 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
                 >
                   {/* Node */}
